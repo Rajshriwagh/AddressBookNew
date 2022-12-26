@@ -1,6 +1,8 @@
 package com.AddressBook;
+import java.util.Scanner;
 
 public class Contacts {
+	static Scanner scanner = new Scanner(System.in);
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -89,6 +91,25 @@ public class Contacts {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public void editingContact(){
+
+        System.out.println("Please enter the first name: ");
+        setFirstName(scanner.next());
+        System.out.println("Please enter the last name: ");
+        setLastName(scanner.next());
+        System.out.println("Please enter the Address: ");
+        setAddress(scanner.next());
+        System.out.println("Please enter the city: ");
+        setCity(scanner.next());
+        System.out.println("Please enter the state: ");
+        setState(scanner.next());
+        System.out.println("Please enter the zip: ");
+        setZip(scanner.nextInt());
+        System.out.println("Please enter the Phone Number: ");
+        setPhoneNumber(scanner.nextLong());
+        System.out.println("Please enter the email: ");
+        setEmail(scanner.next());
+    }
 
 	@Override
 	public String toString() {

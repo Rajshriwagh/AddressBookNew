@@ -5,41 +5,77 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+	static List<Contacts> a1 = new ArrayList<>();
+	static Scanner scanner = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		System.out.println("Welcome to Address Book System!");
+
+		System.out.println("!!!Welcome to Address Book Program!!!");
 		// Adding new contacts to address book
-        List<Object> a1 = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number of contacts you would like to enter?");
-        int numberOfContacts = scanner.nextInt();
-        
+
+		System.out.println("Enter the number of contacts you would like to enter?");
+		int numberOfContacts = scanner.nextInt();
+		addingContacts(numberOfContacts);
+		System.out.println("All the contacts are added successfully!");
+		// Displaying added contacts
+		for (Object object : a1) {
+			System.out.println(object);
+		}
+		// editing the contacts which you have added
+		System.out.println("Please enter the first name of the added contact to edit: ");
+		String firstNameToEdit = scanner.next();
+		editContacts(firstNameToEdit);
+		System.out.println();
+		// Displaying added contacts
+		for (Object object : a1) {
+			System.out.println(object);
+		}
+		System.out.println("Thank you for using Address Book Program!");
+		scanner.close();
+	}
+
+    private static void addingContacts(int numberOfContacts) {
         for (int i = 1; i <= numberOfContacts; i++) {
-            Contacts cs1 = new Contacts();
+            Contacts contactObj = new Contacts();
             System.out.println("Please enter the first name: ");
-            cs1.setFirstName(scanner.next());
+            contactObj.setFirstName(scanner.next());
             System.out.println("Please enter the last name: ");
-            cs1.setLastName(scanner.next());
+            contactObj.setLastName(scanner.next());
             System.out.println("Please enter the Address: ");
-            cs1.setAddress(scanner.next());
+            contactObj.setAddress(scanner.next());
             System.out.println("Please enter the city: ");
-            cs1.setCity(scanner.next());
+            contactObj.setCity(scanner.next());
             System.out.println("Please enter the state: ");
-            cs1.setState(scanner.next());
+            contactObj.setState(scanner.next());
             System.out.println("Please enter the zip: ");
-            cs1.setZip(scanner.nextInt());
+            contactObj.setZip(scanner.nextInt());
             System.out.println("Please enter the Phone Number: ");
-            cs1.setPhoneNumber(scanner.nextLong());
+            contactObj.setPhoneNumber(scanner.nextLong());
             System.out.println("Please enter the email: ");
-            cs1.setEmail(scanner.next());
-            
+            contactObj.setEmail(scanner.next());
             // adding the contact in the array list
-            a1.add(cs1);
+            a1.add(contactObj);
             System.out.println(i + " contact are added successfully!");
         }
-        System.out.println("All the contacts are added successfully as follows!");
-        for (Object object : a1) {
-            System.out.println(object);
+
+    }
+    // I/P:First Name
+    // O/P: editing all the details of the contact
+
+    private static void editContacts(String firstNameToEdit) {
+        boolean isContactFound = true;
+        for (Contacts object : a1) {
+            if (firstNameToEdit.equals(object.getFirstName())) {
+                System.out.println("Lets edit the contacts: ");
+                object.editingContact();
+                isContactFound = false;
+                break;
+            }
         }
-        scanner.close();
-	}
+        if (isContactFound) {
+            System.out.println("Sorry there is no contact with this first name");
+        }
+
+    }
+
 }
