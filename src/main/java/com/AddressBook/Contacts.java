@@ -4,16 +4,26 @@ public class Contacts {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String phoneNumber;
-	private String zip;
+	private long phoneNumber;
+	private int zip;
 	private String city;
 	private String state;
 	private String address;
 
-	@Override
-	public String toString() {
-		return "Contacts [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber="
-				+ phoneNumber + ", zip=" + zip + ", city=" + city + ", state=" + state + ", address=" + address + "]";
+	public Contacts(String firstName, String lastName, String email, long phoneNumber, int zip, String city,
+			String state, String address) {
+
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.zip = zip;
+		this.city = city;
+		this.state = state;
+		this.address = address;
+	}
+
+	public Contacts() {
 	}
 
 	public String getFirstName() {
@@ -40,19 +50,19 @@ public class Contacts {
 		this.email = email;
 	}
 
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getZip() {
+	public int getZip() {
 		return zip;
 	}
 
-	public void setZip(String zip) {
+	public void setZip(int zip) {
 		this.zip = zip;
 	}
 
@@ -78,5 +88,12 @@ public class Contacts {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "Contacts{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email
+				+ '\'' + ", phoneNumber=" + phoneNumber + ", zip=" + zip + ", city='" + city + '\'' + ", state='"
+				+ state + '\'' + ", address='" + address + '\'' + '}';
 	}
 }
